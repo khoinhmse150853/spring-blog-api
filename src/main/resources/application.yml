@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.jdbc.batch_size: 20
+      hibernate.cache.use_query_cache: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_structured_entries: false
+      hibernate.cache.use_minimal_puts: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/BlogPostgres
+    username: postgres
+    password: 110401
+    driverClassName: org.postgresql.Driver
+
+#app:
+#  jwt-secret: d5ad0c8312d7be2932fca80d0c7a030190c16813a7a8abde3adef38d709323ec
+#app-jwt-expiration-milliseconds: 604800000
+
+security:
+  jwt:
+    token:
+      jwt-secret: d5ad0c8312d7be2932fca80d0c7a030190c16813a7a8abde3adef38d709323ec
+      jwt-expiration-milliseconds: 604800000
+
