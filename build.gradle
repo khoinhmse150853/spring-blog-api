@@ -1,7 +1,14 @@
+buildscript {
+    dependencies {
+        classpath("org.flywaydb:flyway-gradle-plugin:9.16.0")
+    }
+}
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.2-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.1.0'
+    id "org.flywaydb.flyway" version "9.8.1"
 }
 
 group = 'com.springboot.blog'
@@ -21,6 +28,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+    implementation 'org.flywaydb:flyway-core'
 
 //    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     runtimeOnly 'org.postgresql:postgresql'
@@ -45,3 +54,11 @@ jar {
     archiveClassifier.set('')
 }
 // Add these END
+
+flyway {
+    driver = 'org.postgresql.Driver'
+    url = 'jdbc:postgresql://containers-us-west-9.railway.app:7102/railway'
+    user = 'postgres'
+    password = 'wKoSoz8o7oKQaRTYirHo'
+    cleanDisabled = false
+}
